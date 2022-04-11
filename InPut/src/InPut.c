@@ -1,6 +1,6 @@
 /*
  ============================================================================
- Name        : Prueba.c
+ Name        : InPut.c
  Author      : 
  Version     :
  Copyright   : Your copyright notice
@@ -12,9 +12,6 @@
 #include <stdlib.h>
 
 int main(void) {
-	int numero=1;
-	printf("Ingrese variable");
-	scanf("%d",&numero);
-	printf("%d",numero);
+	puts("!!!Hello World!!!"); /* prints !!!Hello World!!! */
 	return EXIT_SUCCESS;
 }
