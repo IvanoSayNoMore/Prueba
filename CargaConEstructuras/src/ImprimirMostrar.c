@@ -15,18 +15,19 @@
 void MostrarListadoProducto(eProducto producto[], int tam)
 {
 	int i;
-	for(i=0;i<tam-1;i++)
+	for(i=0;i<tam;i++)
 	{
 		if(producto[i].isEmpty==FULL)
-		{
+		{	puts("|Numero de id  | Descripcion  |    Tipo     |    Precio     |  Fabricado en | Fecha de Fabricacion |");
 			MostrarUnEmpleado(producto[i]);
 		}
 	}
 }
 void MostrarUnEmpleado(eProducto producto)
 {
-	  puts("|Numero de id  | Descripcion  |    Tipo     |    Precio     |  Fabricado en | Fecha de Fabricacion |");
-	printf("|%d            |%s            | %s          | %d            |  %s           | %d|%d|%d             | \n",
-			producto.idProducto,producto.descripcion,producto.tipo,producto.percio,producto.madeIn,
+
+	printf("|%d            |%s            | %s          | %d            |  %s           | %d|%d|%d            | \n",
+			producto.numeroDeAlta,producto.modelo,producto.tipo,producto.percio,producto.madeIn,
 			producto.fechaDeIngreso.dia,producto.fechaDeIngreso.mes,producto.fechaDeIngreso.anio);
+	printf("\n\nNumero de alta: %d\n",producto.numeroDeAlta);
 }

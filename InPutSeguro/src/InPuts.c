@@ -10,30 +10,7 @@
 #include <ctype.h>
 #include "utnInPuts.h"
 
-/**
- * \brief Recorre stdin hasta \n o hasta maximo de "cadena"-1
- * @param cadena cadena Puntero al espacio de memoria donde se copia la cadena obtenida
- * @param longitud longitud Largo de la cadena
- * @return Retorna 0 si se obtiene una cadena. -1 Cuando no encuentra cadena
- */
-static int myGets(char* cadena, int longitud);
-
-/**
- *\brief Verifica que la cadena sea numerica
- * @param pResultado Puntero al espacio de memoria donde se copiara la cadena obtenida
- * @return retorna 0 si obtiene cadena. -1 cuando no .
- */
-static int getInt(int* pResultado);
-
-/**
- * \brief Verifica si la cadena ingresada es numerica
- * @param cadena Cadena a ser analizada
- * @return Rotorna 1 si la cadena es numerica. 0, si no lo es.
- */
-static int esNumerica(char* cadena);
-////////////////////Fin declaracion Estaticas///////////////////////
-
-static int myGets(char* cadena, int longitud)
+int utnMyGets(char* cadena, int longitud)
 {
 	fflush(stdin);
 	fgets(cadena,longitud,stdin);
@@ -41,34 +18,12 @@ static int myGets(char* cadena, int longitud)
 	return 0;
 }
 
-static int esNumerica(char* cadena)
-{
-	int retorno=1;
-	int i=0;
-	if(cadena[0]=='-')
-	{
-		i=1;
-	}
-
-	for(;cadena[i] != '\0';i++)
-	{
-		if(cadena[i]>'9' || cadena[i]<'0')
-		{
-			retorno=0;
-			break;
-		}
-	}
-
-
-	return retorno;
-}
-
-static int getInt(int* pResultado)
+int utnGetInt(int* pResultado)
 {
 	int retorno=-1;
 	char buffer[1000];
 
-	if(myGets(buffer,sizeof(buffer))==0 && esNumerica(buffer))
+	if(utnMyGets(buffer,sizeof(buffer))==0 && utnEsNumerica(buffer))
 	{
 		retorno=0;
 		*pResultado=atoi(buffer);
@@ -90,7 +45,7 @@ int utnGetNumero(float* pNumeroIngresado, char* mensaje, char* mensajeError,char
 		{
 
 			printf("%s",mensaje);
-			if(getInt(&buffer)==0 && buffer>=minimo && buffer<=maximo)
+			if(utnGetInt(&buffer)==0 && buffer>=minimo && buffer<=maximo)
 			{
 				*pNumeroIngresado=buffer;
 				retorno=0;
@@ -131,6 +86,28 @@ int utnVerificacionConChar(char* mensajeValidacion,char* mensajeFinal)
 		printf("\n %s \n",mensajeFinal);
 		retorno =-1;
 	}
+	return retorno;
+}
+
+int utnEsNumerica(char* cadena)
+{
+	int retorno=1;
+	int i=0;
+	if(cadena[0]=='-')
+	{
+		i=1;
+	}
+
+	for(;cadena[i] != '\0';i++)
+	{
+		if(cadena[i]>'9' || cadena[i]<'0')
+		{
+			retorno=0;
+			break;
+		}
+	}
+
+
 	return retorno;
 }
 

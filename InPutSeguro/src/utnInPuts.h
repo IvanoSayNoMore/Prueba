@@ -12,27 +12,16 @@
 #include <string.h>
 #include <ctype.h>
 
-/**
- * \brief
- * @param pNumeroIngresado
- * @param mensaje
- * @param mensajeError
- * @param mensajeSeguirNoSeguir
- * @param minimo
- * @param maximo
- * @param reintentos
- * @return
- */
+int myGets(char* cadena, int longitud);
+
+int utnGetInt(int* pResultado);
+
 int utnGetNumero(float* pNumeroIngresado, char* mensaje, char* mensajeError,char* mensajeSeguirNoSeguir,
 		int minimo, int maximo, int reintentos);
 
-/**
- *
- * @param mensajeValidacion
- * @param mensajeFinal
- * @return
- */
 int utnVerificacionConChar(char* mensajeValidacion,char* mensajeFinal);
+
+int utnEsNumerica(char* cadena);
 
 void utnMostrarResultados(float parametroPivot, float parametroA, float parametroB,float parametroAconDescuento,
 		float parametroBconDescuento,float parametroAconAumento,float parametroBconAumento,float valorPorUnidadParametroB,
